@@ -1,0 +1,45 @@
+@use './normalize' as *;
+@use './fonts' as *;
+@use './variables' as *;
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: $bg-primary;
+  color: $color-text-primary;
+  min-height: 100%;
+  line-height: 1.5;
+}
+
+a {
+  color: $color-accent-primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: $color-text-primary;
+  margin: 0;
+}
+
+p {
+  margin: 0 0 16px 0;
+  color: $color-text-secondary;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
