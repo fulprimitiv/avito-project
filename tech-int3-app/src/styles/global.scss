@@ -1,13 +1,12 @@
-@use './normalize' as *;
-@use './fonts' as *;
-@use './variables' as *;
+@use "./normalize" as *;
+@use "./fonts" as *;
+@use "./variables" as *;
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   background-color: $bg-primary;
   color: $color-text-primary;
   min-height: 100%;
-  line-height: 1.5;
 }
 
 a {
@@ -26,14 +25,17 @@ button {
   background: none;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   color: $color-text-primary;
-  margin: 0;
 }
 
 p {
-  margin: 0 0 16px 0;
   color: $color-text-secondary;
 }
 
