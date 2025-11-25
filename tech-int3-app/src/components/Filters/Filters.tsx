@@ -12,27 +12,80 @@ import {
 	Stack,
 	Slider,
 } from '@mui/material';
+import { CATEGORIES, AD_STATUS_LABELS } from '../../shared/constants/adsConstants';
+import type { AdStatus, FiltersState } from '../../shared/types/adsTypes';
 
-{/* ИЗМЕНИ НА ДАННЫЕ С БЭКА / АДАПТИВ ДЛЯ МОБИЛКИ / РЕРЕНДЕР СЛАЙДЕРА */ }
-const statusOptions = ['На модерации', 'Одобрено', 'Отклонено'];
-const categoryOptions = ['Электроника', 'Одежда', 'Обувь', 'Книги'];
+interface FiltersProps {
+	onFiltersChange: (filters: FiltersState) => void;
+}
 
-const Filters: React.FC = () => {
-	const [status, setStatus] = useState<string[]>([]);
-	const [category, setCategory] = useState<string[]>([]);
-	const [priceRange, setPriceRange] = useState<number[]>([0, 10000]);
+const statusOptions: AdStatus[] = ['pending', 'approved', 'rejected'];
+const maxPrice = 100000;
+
+const Filters: React.FC<FiltersProps> = ({ onFiltersChange }) => {
+	const [status, setStatus] = useState<AdStatus[]>([]);
+	const [categoryId, setCategoryId] = useState<number | ''>('');
+	const [priceRange, setPriceRange] = useState<number[]>([0, maxPrice]);
 	const [search, setSearch] = useState('');
+	const [sortBy, setSortBy] = useState<'createdAt' | 'price' | 'priority'>('createdAt');
+	const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+
+	const handleFilterChange = () => {
+		onFiltersChange({
+			status,
+			categoryId: categoryId ? Number(categoryId) : undefined,
+			minPrice: priceRange[0],
+			maxPrice: priceRange[1],
+			search: search || undefined,
+			sortBy,
+			sortOrder,
+		});
+	};
 
 	const handleReset = () => {
 		setStatus([]);
-		setCategory([]);
-		setPriceRange([0, 10000]);
+		setCategoryId('');
+		setPriceRange([0, maxPrice]);
 		setSearch('');
+		setSortBy('createdAt');
+		setSortOrder('desc');
+		onFiltersChange({
+			status: [],
+			categoryId: undefined,
+			minPrice: 0,
+			maxPrice: maxPrice,
+			search: undefined,
+			sortBy: 'createdAt',
+			sortOrder: 'desc',
+		});
+	};
+
+	const handleStatusChange = (newStatus: AdStatus[]) => {
+		setStatus(newStatus);
+	};
+
+	const handleCategoryChange = (e: any) => {
+		setCategoryId(e.target.value);
+	};
+
+	const handlePriceChange = (_: any, v: any) => {
+		setPriceRange(v as number[]);
+	};
+
+	const handleSearchChange = (e: any) => {
+		setSearch(e.target.value);
+	};
+
+	const handleSortByChange = (e: any) => {
+		setSortBy(e.target.value);
+	};
+
+	const handleSortOrderChange = (e: any) => {
+		setSortOrder(e.target.value);
 	};
 
 	return (
 		<Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} flexWrap="wrap" alignItems="center">
-
 			{/* Поиск */}
 			<TextField
 				label="Поиск по названию"
@@ -40,18 +93,26 @@ const Filters: React.FC = () => {
 				size="small"
 				sx={{ minWidth: 200 }}
 				value={search}
-				onChange={(e) => setSearch(e.target.value)}
+				onChange={handleSearchChange}
+				onBlur={handleFilterChange}
 			/>
 
 			{/* Сортировка */}
 			<FormControl size="small" sx={{ minWidth: 150 }}>
 				<InputLabel>Сортировка</InputLabel>
-				<Select label="Сортировка" defaultValue="priority">
+				<Select label="Сортировка" value={sortBy} onChange={handleSortByChange}>
+					<MenuItem value="createdAt">По дате</MenuItem>
+					<MenuItem value="price">По цене</MenuItem>
 					<MenuItem value="priority">По приоритету</MenuItem>
-					<MenuItem value="date-new">Сначала новые</MenuItem>
-					<MenuItem value="date-old">Сначала старые</MenuItem>
-					<MenuItem value="price-asc">Цена по возрастанию</MenuItem>
-					<MenuItem value="price-desc">Цена по убыванию</MenuItem>
+				</Select>
+			</FormControl>
+
+			{/* Порядок сортировки */}
+			<FormControl size="small" sx={{ minWidth: 120 }}>
+				<InputLabel>Порядок</InputLabel>
+				<Select label="Порядок" value={sortOrder} onChange={handleSortOrderChange}>
+					<MenuItem value="desc">По убыванию</MenuItem>
+					<MenuItem value="asc">По возрастанию</MenuItem>
 				</Select>
 			</FormControl>
 
@@ -61,20 +122,20 @@ const Filters: React.FC = () => {
 				<Select
 					multiple
 					value={status}
-					onChange={(e) => setStatus(e.target.value as string[])}
+					onChange={(e) => handleStatusChange(e.target.value as AdStatus[])}
 					input={<OutlinedInput label="Статус" />}
 					renderValue={(selected) =>
 						selected.length === 0
 							? 'Статус'
 							: selected.length === 1
-								? selected[0]
+								? AD_STATUS_LABELS[selected[0]]
 								: `Статус: ${selected.length}`
 					}
 				>
 					{statusOptions.map((s) => (
 						<MenuItem key={s} value={s}>
 							<Checkbox checked={status.includes(s)} />
-							<ListItemText primary={s} />
+							<ListItemText primary={AD_STATUS_LABELS[s]} />
 						</MenuItem>
 					))}
 				</Select>
@@ -83,14 +144,11 @@ const Filters: React.FC = () => {
 			{/* Категория */}
 			<FormControl size="small" sx={{ minWidth: 160 }}>
 				<InputLabel>Категория</InputLabel>
-				<Select
-					value={category}
-					onChange={(e) => setCategory(e.target.value as string[])}
-					label="Категория"
-				>
-					{categoryOptions.map((c) => (
-						<MenuItem key={c} value={c}>
-							{c}
+				<Select value={categoryId} onChange={handleCategoryChange} label="Категория">
+					<MenuItem value="">Все категории</MenuItem>
+					{CATEGORIES.map((c) => (
+						<MenuItem key={c.id} value={c.id}>
+							{c.name}
 						</MenuItem>
 					))}
 				</Select>
@@ -98,21 +156,27 @@ const Filters: React.FC = () => {
 
 			{/* Диапазон цен */}
 			<Stack sx={{ minWidth: 200, px: 1 }}>
-				<InputLabel>Диапазон цен</InputLabel>
+				<InputLabel>
+					Диапазон цен: {priceRange[0]} - {priceRange[1]} ₽
+				</InputLabel>
 				<Slider
 					value={priceRange}
-					onChange={(e, v) => setPriceRange(v as number[])}
+					onChange={handlePriceChange}
 					valueLabelDisplay="auto"
 					min={0}
-					max={10000}
+					max={maxPrice}
 				/>
 			</Stack>
 
-			{/* Сброс */}
-			<Button variant="outlined" onClick={handleReset}>
-				Сбросить
-			</Button>
-
+			{/* Кнопки */}
+			<Stack direction="row" spacing={1}>
+				<Button variant="contained" onClick={handleFilterChange} size="small">
+					Применить
+				</Button>
+				<Button variant="outlined" onClick={handleReset} size="small">
+					Сбросить
+				</Button>
+			</Stack>
 		</Stack>
 	);
 };

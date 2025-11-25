@@ -1,5 +1,4 @@
 .card {
-	width: 260px;
 	border: 1px solid #e6e6e6;
 	border-radius: 12px;
 	overflow: hidden;
@@ -10,7 +9,7 @@
 	cursor: pointer;
 
 	&:hover {
-		box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+		box-shadow: 0 4px 14px rgba(#1a73e8, 0.2);
 	}
 
 	&__image-wrapper {
@@ -30,7 +29,7 @@
 		position: absolute;
 		top: 10px;
 		left: 10px;
-		background: #ff4444;
+		background: #1a73e8;
 		color: #fff;
 		padding: 4px 10px;
 		border-radius: 6px;
@@ -38,42 +37,14 @@
 		font-weight: 600;
 	}
 
-	&__content {
-		padding: 12px 14px;
-		display: flex;
-		flex-direction: column;
-		gap: 4px;
-	}
-
-	&__title {
-		font-size: 16px;
-		font-weight: 600;
-		margin: 0;
-	}
-
-	&__price {
-		font-size: 18px;
-		font-weight: 700;
-		color: #1a73e8;
-	}
-
-	&__category {
-		font-size: 14px;
-		color: #777;
-	}
-
-	&__date {
-		font-size: 13px;
-		color: #999;
-	}
-
 	&__status {
-		font-size: 14px;
-		font-weight: 600;
-		margin-top: 6px;
-		padding: 4px 6px;
-		width: fit-content;
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		padding: 4px 10px;
 		border-radius: 6px;
+		font-size: 12px;
+		font-weight: 600;
 
 		&--approved {
 			background: #d4f8d4;
@@ -88,6 +59,34 @@
 		&--moderation {
 			background: #fff4c2;
 			color: #8c7400;
+		}
+	}
+
+	&__content {
+		padding: 12px 14px;
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+
+		&-title {
+			font-size: 20px;
+			font-weight: 600;
+		}
+
+		&-price {
+			font-size: 18px;
+			font-weight: 700;
+			color: #1a73e8;
+		}
+
+		&-category {
+			font-size: 14px;
+			color: #777;
+		}
+
+		&-date {
+			font-size: 13px;
+			color: #999;
 		}
 	}
 }
