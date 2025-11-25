@@ -2,24 +2,6 @@ export type AdStatus = 'pending' | 'approved' | 'rejected';
 export type AdPriority = 'normal' | 'urgent';
 export type ModerationAction = 'approved' | 'rejected';
 
-export interface ModerationHistory {
-	id: number;
-	moderatorId: number;
-	moderatorName: string;
-	action: ModerationAction;
-	reason: string | null;
-	comment: string;
-	timestamp: string;
-}
-
-export interface Seller {
-	id: number;
-	name: string;
-	rating: string;
-	totalAds: number;
-	registeredAt: string;
-}
-
 export interface Ad {
 	id: number;
 	title: string;
@@ -69,6 +51,10 @@ export interface CardProps {
 	priority: "normal" | "urgent";
 }
 
+export interface CardsListProps {
+	ads: Ad[];
+}
+
 export interface AdsQueryParams {
 	page?: number;
 	limit?: number;
@@ -79,4 +65,23 @@ export interface AdsQueryParams {
 	search?: string;
 	sortBy?: 'createdAt' | 'price' | 'priority';
 	sortOrder?: 'asc' | 'desc';
+}
+
+// заглушка для Ad, буду юзать потом
+export interface ModerationHistory {
+	id: number;
+	moderatorId: number;
+	moderatorName: string;
+	action: ModerationAction;
+	reason: string | null;
+	comment: string;
+	timestamp: string;
+}
+
+export interface Seller {
+	id: number;
+	name: string;
+	rating: string;
+	totalAds: number;
+	registeredAt: string;
 }

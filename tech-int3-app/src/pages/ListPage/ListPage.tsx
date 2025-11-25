@@ -1,55 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Container, Box, CircularProgress, Typography, Pagination, Stack } from '@mui/material';
 import Filters from '../../components/Filters/Filters';
-import Card from '../../components/Card/Card';
-import { getAdsList } from '../../api/adsService';
-import type { Ad, FiltersState } from '../../shared/types/adsTypes';
-import { STATUS_TO_CARD_STATUS } from '../../shared/constants/adsConstants';
+import { useAds } from '../../shared/hooks/useAds';
+import CardList from '../../components/CardList/CardList';
 
 const ListPage: React.FC = () => {
-  const [ads, setAds] = useState<Ad[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-  const [totalItems, setTotalItems] = useState(0);
-  const [filters, setFilters] = useState<FiltersState>({
-    status: [],
-    sortBy: 'createdAt',
-    sortOrder: 'desc',
-  });
+  const { ads, loading, error, page: currentPage, totalPages, totalItems, setFilters, setPage } = useAds();
 
-  const fetchAds = async (page: number = 1) => {
-    setLoading(true);
-    setError(null);
-    try {
-      const data = await getAdsList({
-        page,
-        limit: 10,
-        ...filters,
-      });
-      setAds(data.ads);
-      setTotalPages(data.pagination.totalPages);
-      setTotalItems(data.pagination.totalItems ?? data.ads.length ?? 0);
-      setCurrentPage(page);
-    } catch (err) {
-      setError('Ошибка при загрузке объявлений');
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchAds(1);
-  }, [filters]);
-
-  const handleFiltersChange = (newFilters: FiltersState) => {
+  const handleFiltersChange = (newFilters: any) => {
     setFilters(newFilters);
   };
 
-  const handlePageChange = (_: React.ChangeEvent<unknown>, page: number) => {
-    fetchAds(page);
+  const handlePageChange = (_: React.ChangeEvent<unknown>, pageNum: number) => {
+    setPage(pageNum);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -73,27 +36,8 @@ const ListPage: React.FC = () => {
         <Typography sx={{ mt: 4, textAlign: 'center' }}>Объявления не найдены</Typography>
       ) : (
         <>
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-              gap: 3,
-              mt: 4,
-            }}
-          >
-            {ads.map((ad) => (
-              <Card
-                key={ad.id}
-                image={ad.images[0]}
-                title={ad.title}
-                price={ad.price}
-                category={ad.category}
-                date={new Date(ad.createdAt).toLocaleDateString('ru-RU')}
-                status={STATUS_TO_CARD_STATUS[ad.status]}
-                priority={ad.priority}
-              />
-            ))}
-          </Box>
+
+          <CardList ads={ads} />
 
           {totalPages > 1 && (
             <Stack

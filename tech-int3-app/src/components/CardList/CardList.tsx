@@ -1,19 +1,18 @@
 import React from 'react';
 import Card from '../Card/Card';
-import type { Ad } from '../../shared/types/adsTypes';
+import type { CardsListProps } from '../../shared/types/adsTypes';
+import { Box } from '@mui/material';
 
-interface AdsListProps {
-	ads: Ad[];
-}
-
-const AdsList: React.FC<AdsListProps> = ({ ads }) => {
+const CardList: React.FC<CardsListProps> = ({ ads }) => {
 	return (
-		<div style={{
-			display: 'grid',
-			gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-			gap: 24,
-			marginTop: 24,
-		}}>
+		<Box
+			sx={{
+				display: 'grid',
+				gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
+				gap: 3,
+				mt: 4,
+			}}
+		>
 			{ads.map(ad => (
 				<Card
 					key={ad.id}
@@ -26,8 +25,8 @@ const AdsList: React.FC<AdsListProps> = ({ ads }) => {
 					priority={ad.priority}
 				/>
 			))}
-		</div>
+		</Box>
 	);
 };
 
-export default AdsList;
+export default CardList;
