@@ -7,7 +7,7 @@ const Header: React.FC = () => (
 		<div className="app-header__container">
 			<Link to="/list" className="app-header__logo-link">
 				<img
-					src={new URL('../../assets/img/avito-logo.svg', import.meta.url).href}
+					src={new URL('../../../assets/img/avito-logo.svg', import.meta.url).href}
 					alt="Avito logo"
 					draggable={false}
 					className="app-header__logo"

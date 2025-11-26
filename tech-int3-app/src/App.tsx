@@ -1,4 +1,4 @@
-import Header from './components/Header/Header';
+import Header from './components/global-components/Header/Header';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import ListPage from './pages/ListPage/ListPage';
 import ItemPage from './pages/ItemPage/ItemPage';

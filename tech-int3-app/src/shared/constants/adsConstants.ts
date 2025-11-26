@@ -6,7 +6,7 @@ export const PRIORITY_MAPPING: Record<AdPriority, string> = {
 };
 
 export const STATUS_TEXT: Record<CardProps["status"], string> = {
-	moderation: "На модерации",
+	pending: "На модерации",
 	approved: "Одобрено",
 	rejected: "Отклонено",
 };

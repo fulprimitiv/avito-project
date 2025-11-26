@@ -12,8 +12,8 @@ import {
 	Stack,
 	Slider,
 } from '@mui/material';
-import { CATEGORIES, AD_STATUS_LABELS, SORT_OPTIONS } from '../../shared/constants/filterConstants';
-import type { AdStatus, FiltersState } from '../../shared/types/adsTypes';
+import { CATEGORIES, AD_STATUS_LABELS, SORT_OPTIONS } from '../../../shared/constants/filterConstants';
+import type { AdStatus, FiltersState } from '../../../shared/types/adsTypes';
 
 interface FiltersProps {
 	onFiltersChange: (filters: FiltersState) => void;

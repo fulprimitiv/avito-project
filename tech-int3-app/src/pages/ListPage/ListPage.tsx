@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Box, CircularProgress, Typography, Pagination, Stack } from '@mui/material';
-import Filters from '../../components/Filters/Filters';
+import Filters from '../../components/list-components/Filters/Filters';
 import { useAds } from '../../shared/hooks/useAds';
-import CardList from '../../components/CardList/CardList';
+import CardList from '../../components/list-components/CardList/CardList';
 
 const ListPage: React.FC = () => {
   const { ads, loading, error, page: currentPage, totalPages, totalItems, setFilters, setPage } = useAds();

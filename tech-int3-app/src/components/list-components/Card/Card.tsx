@@ -1,7 +1,7 @@
 import React from "react";
 import "./Card.scss";
-import { PRIORITY_MAPPING, STATUS_TEXT } from '../../shared/constants/adsConstants';
-import type { CardProps } from '../../shared/types/adsTypes';
+import { PRIORITY_MAPPING, STATUS_TEXT } from '../../../shared/constants/adsConstants';
+import type { CardProps } from '../../../shared/types/adsTypes';
 import { useNavigate } from "react-router-dom";
 
 const Card: React.FC<CardProps> = ({

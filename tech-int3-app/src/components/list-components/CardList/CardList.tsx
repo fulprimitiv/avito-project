@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../Card/Card';
-import type { CardsListProps } from '../../shared/types/adsTypes';
+import type { CardsListProps } from '../../../shared/types/adsTypes';
 import { Box } from '@mui/material';
 
 const CardList: React.FC<CardsListProps> = ({ ads }) => {
@@ -22,7 +22,7 @@ const CardList: React.FC<CardsListProps> = ({ ads }) => {
 					price={ad.price}
 					category={ad.category}
 					date={new Date(ad.createdAt).toLocaleDateString('ru-RU')}
-					status={ad.status === 'pending' ? 'moderation' : (ad.status as any)}
+					status={ad.status}
 					priority={ad.priority}
 				/>
 			))}
