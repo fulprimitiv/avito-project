@@ -2,8 +2,10 @@ import React from "react";
 import "./Card.scss";
 import { PRIORITY_MAPPING, STATUS_TEXT } from '../../shared/constants/adsConstants';
 import type { CardProps } from '../../shared/types/adsTypes';
+import { useNavigate } from "react-router-dom";
 
 const Card: React.FC<CardProps> = ({
+  id,
   image,
   title,
   price,
@@ -12,8 +14,15 @@ const Card: React.FC<CardProps> = ({
   status,
   priority,
 }) => {
+
+  const navigate = useNavigate();
+
   return (
-    <section className="card">
+    <section
+      className="card"
+      onClick={() => navigate(`/item/${id}`)}
+      style={{ cursor: "pointer" }}
+    >
       <div className="card__image-wrapper">
         <img
           src={image || new URL("../../assets/img/no-image.png", import.meta.url).href}

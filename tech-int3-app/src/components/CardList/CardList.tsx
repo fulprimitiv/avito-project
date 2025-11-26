@@ -16,6 +16,7 @@ const CardList: React.FC<CardsListProps> = ({ ads }) => {
 			{ads.map(ad => (
 				<Card
 					key={ad.id}
+					id={ad.id}
 					image={ad.images?.[0] || undefined}
 					title={ad.title}
 					price={ad.price}
