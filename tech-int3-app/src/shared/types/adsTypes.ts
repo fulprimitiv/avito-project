@@ -1,6 +1,26 @@
 export type AdStatus = 'pending' | 'approved' | 'rejected';
 export type AdPriority = 'normal' | 'urgent';
-export type ModerationAction = 'approved' | 'rejected';
+export type ModerationActionType = 'approved' | 'rejected';
+
+export interface Seller {
+	id: number;
+	name: string;
+	rating: number;
+	totalAds: number;
+	registeredAt: string;
+}
+
+export interface ModerationAction {
+	id: number;
+	moderatorId: number;
+	moderatorName: string;
+	action: ModerationActionType;
+	reason: string | null;
+	comment: string;
+	timestamp: string;
+}
+
+export type ModerationHistory = ModerationAction[];
 
 export interface Ad {
 	id: number;
@@ -16,7 +36,7 @@ export interface Ad {
 	images: string[];
 	seller: Seller;
 	characteristics: Record<string, string>;
-	moderationHistory: ModerationHistory[];
+	moderationHistory: ModerationHistory;
 }
 
 export interface Pagination {
@@ -41,20 +61,6 @@ export interface FiltersState {
 	sortOrder?: 'asc' | 'desc';
 }
 
-export interface CardProps {
-	image?: string;
-	title: string;
-	price: number;
-	category: string;
-	date: string;
-	status: "moderation" | "approved" | "rejected";
-	priority: "normal" | "urgent";
-}
-
-export interface CardsListProps {
-	ads: Ad[];
-}
-
 export interface AdsQueryParams {
 	page?: number;
 	limit?: number;
@@ -67,21 +73,17 @@ export interface AdsQueryParams {
 	sortOrder?: 'asc' | 'desc';
 }
 
-// заглушка для Ad, буду юзать потом
-export interface ModerationHistory {
+export interface CardProps {
 	id: number;
-	moderatorId: number;
-	moderatorName: string;
-	action: ModerationAction;
-	reason: string | null;
-	comment: string;
-	timestamp: string;
+	image?: string;
+	title: string;
+	price: number;
+	category: string;
+	date: string;
+	status: AdStatus;
+	priority: AdPriority;
 }
 
-export interface Seller {
-	id: number;
-	name: string;
-	rating: string;
-	totalAds: number;
-	registeredAt: string;
+export interface CardsListProps {
+	ads: Ad[];
 }

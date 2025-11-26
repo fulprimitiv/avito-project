@@ -1,0 +1,20 @@
+.seller-info {
+	background: #fff;
+	border-radius: 8px;
+	padding: 20px 24px;
+	margin: 24px 0;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+
+	&__name {
+		font-size: 18px;
+		font-weight: 600;
+		margin-bottom: 10px;
+	}
+
+	&__row {
+		margin-bottom: 6px;
+		font-size: 15px;
+		display: flex;
+		gap: 8px;
+	}
+}

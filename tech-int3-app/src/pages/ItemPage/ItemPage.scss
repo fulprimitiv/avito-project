@@ -1,0 +1,18 @@
+.item-page {
+	max-width: 900px;
+	margin: 100px auto;
+	padding: 0 16px;
+
+	&__loading {
+		text-align: center;
+		margin-top: 100px;
+		font-size: 18px;
+	}
+
+	&__error {
+		color: red;
+		text-align: center;
+		margin-top: 100px;
+		font-size: 18px;
+	}
+}
