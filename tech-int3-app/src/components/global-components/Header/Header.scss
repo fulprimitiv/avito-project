@@ -18,12 +18,18 @@
       height: 32px;
    }
 
-   &__author-label {
+   &__author-link {
+      color: #181111;
       font-size: 18px;
       font-weight: 500;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+
+      &:hover {
+         text-decoration: none;
+         color: #0070f0;
+      }
    }
 
    @media (max-width: 1000px) {
@@ -41,7 +47,7 @@
          height: 28px;
       }
 
-      &__author-label {
+      &__author-link {
          font-size: 18px;
          max-width: 100px;
       }
