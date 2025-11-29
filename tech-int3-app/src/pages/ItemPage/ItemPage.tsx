@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useAdById } from "../../shared/hooks/useAdById";
+import { useAdNavigation } from "../../shared/hooks/useAdNavigation";
 
 import ImageGallery from "../../components/item-components/ImageGallery/ImageGallery";
 import ItemDetails from "../../components/item-components/ItemDetails/ItemDetails";
@@ -12,6 +13,13 @@ const ItemPage = () => {
 	const { id } = useParams<{ id: string }>();
 	const { ad, loading, error } = useAdById(id);
 
+	const {
+		prevId,
+		nextId,
+		navigate,
+		location
+	} = useAdNavigation(id);
+
 	if (loading) return <div className="item-page__loading">Загрузка...</div>;
 
 	if (error) return <div className="item-page__error">{error}</div>;
@@ -20,6 +28,16 @@ const ItemPage = () => {
 
 	return (
 		<div className="item-page">
+			<div className="item-page__nav">
+				<div className="item-page__nav-left">
+					<button className="item-page__btn" onClick={() => navigate('/list', { state: { from: (location as any)?.state?.from || undefined } })}>Назад к списку</button>
+				</div>
+				<div className="item-page__nav-right">
+					<button className="item-page__btn" onClick={() => prevId && navigate(`/item/${prevId}`)} disabled={!prevId}>Предыдущее</button>
+					<button className="item-page__btn" onClick={() => nextId && navigate(`/item/${nextId}`)} disabled={!nextId}>Следующее</button>
+				</div>
+			</div>
+
 			<ImageGallery images={ad.images} />
 
 			<ItemDetails
