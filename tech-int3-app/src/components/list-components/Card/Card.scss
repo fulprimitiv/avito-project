@@ -1,92 +1,92 @@
 .card {
-	border: 1px solid #e6e6e6;
-	border-radius: 12px;
-	overflow: hidden;
-	background: #fff;
-	display: flex;
-	flex-direction: column;
-	transition: box-shadow 0.2s;
-	cursor: pointer;
+   border: 1px solid #e6e6e6;
+   border-radius: 12px;
+   overflow: hidden;
+   background: #fff;
+   display: flex;
+   flex-direction: column;
+   transition: box-shadow 0.2s;
+   cursor: pointer;
 
-	&:hover {
-		box-shadow: 0 4px 14px rgba(#1a73e8, 0.2);
-	}
+   &:hover {
+      box-shadow: 0 4px 14px rgba(#1a73e8, 0.2);
+   }
 
-	&__image-wrapper {
-		position: relative;
-		width: 100%;
-		height: 160px;
-		overflow: hidden;
-	}
+   &__image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 160px;
+      overflow: hidden;
+   }
 
-	&__image {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+   &__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+   }
 
-	&__badge {
-		position: absolute;
-		top: 10px;
-		left: 10px;
-		background: #1a73e8;
-		color: #fff;
-		padding: 4px 10px;
-		border-radius: 6px;
-		font-size: 12px;
-		font-weight: 600;
-	}
+   &__badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #1a73e8;
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+   }
 
-	&__status {
-		position: absolute;
-		top: 10px;
-		right: 10px;
-		padding: 4px 10px;
-		border-radius: 6px;
-		font-size: 12px;
-		font-weight: 600;
+   &__status {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
 
-		&--approved {
-			background: #d4f8d4;
-			color: #2d7a2d;
-		}
+      &--approved {
+         background: #d4f8d4;
+         color: #2d7a2d;
+      }
 
-		&--rejected {
-			background: #ffd3d3;
-			color: #b30000;
-		}
+      &--rejected {
+         background: #ffd3d3;
+         color: #b30000;
+      }
 
-		&--pending {
-			background: #fff4c2;
-			color: #8c7400;
-		}
-	}
+      &--pending {
+         background: #fff4c2;
+         color: #8c7400;
+      }
+   }
 
-	&__content {
-		padding: 12px 14px;
-		display: flex;
-		flex-direction: column;
-		gap: 6px;
+   &__content {
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
 
-		&-title {
-			font-size: 20px;
-			font-weight: 600;
-		}
+      &-title {
+         font-size: 20px;
+         font-weight: 600;
+      }
 
-		&-price {
-			font-size: 18px;
-			font-weight: 700;
-			color: #1a73e8;
-		}
+      &-price {
+         font-size: 18px;
+         font-weight: 700;
+         color: #1a73e8;
+      }
 
-		&-category {
-			font-size: 14px;
-			color: #777;
-		}
+      &-category {
+         font-size: 14px;
+         color: #777;
+      }
 
-		&-date {
-			font-size: 13px;
-			color: #999;
-		}
-	}
+      &-date {
+         font-size: 13px;
+         color: #999;
+      }
+   }
 }

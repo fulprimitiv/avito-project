@@ -3,26 +3,26 @@
 @use './variables' as *;
 
 body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: $bg-primary;
-  color: $color-text-primary;
-  min-height: 100%;
+   font-family: 'Montserrat', sans-serif;
+   background-color: $bg-primary;
+   color: $color-text-primary;
+   min-height: 100%;
 }
 
 a {
-  color: $color-accent-primary;
-  text-decoration: none;
+   color: $color-accent-primary;
+   text-decoration: none;
 
-  &:hover {
-    text-decoration: underline;
-  }
+   &:hover {
+      text-decoration: underline;
+   }
 }
 
 button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  background: none;
+   font-family: inherit;
+   cursor: pointer;
+   border: none;
+   background: none;
 }
 
 h1,
@@ -31,17 +31,17 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
-  color: $color-text-primary;
+   font-weight: 600;
+   color: $color-text-primary;
 }
 
 p {
-  color: $color-text-secondary;
+   color: $color-text-secondary;
 }
 
 .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 16px;
+   width: 100%;
+   max-width: 1200px;
+   margin: 0 auto;
+   padding: 0 16px;
 }

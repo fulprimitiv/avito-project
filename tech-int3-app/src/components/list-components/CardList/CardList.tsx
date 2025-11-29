@@ -1,9 +1,11 @@
 import React from 'react';
-import Card from '../Card/Card';
-import type { CardsListProps } from '../../../shared/types/adsTypes';
 import { Box } from '@mui/material';
+import { Card } from '../Card/Card';
+import type { CardsListProps } from '../../../shared/types/adsTypes';
+import { formatDate } from '../../../shared/utils/formatDate';
 
-const CardList: React.FC<CardsListProps> = ({ ads }) => {
+
+export const CardList: React.FC<CardsListProps> = ({ ads }) => {
 	return (
 		<Box
 			sx={{
@@ -13,7 +15,7 @@ const CardList: React.FC<CardsListProps> = ({ ads }) => {
 				mt: 4,
 			}}
 		>
-			{ads.map(ad => (
+			{ads.map((ad) => (
 				<Card
 					key={ad.id}
 					id={ad.id}
@@ -21,7 +23,7 @@ const CardList: React.FC<CardsListProps> = ({ ads }) => {
 					title={ad.title}
 					price={ad.price}
 					category={ad.category}
-					date={new Date(ad.createdAt).toLocaleDateString('ru-RU')}
+					date={formatDate(ad.createdAt)}
 					status={ad.status}
 					priority={ad.priority}
 				/>
@@ -29,5 +31,3 @@ const CardList: React.FC<CardsListProps> = ({ ads }) => {
 		</Box>
 	);
 };
-
-export default CardList;

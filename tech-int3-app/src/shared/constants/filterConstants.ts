@@ -17,9 +17,9 @@ export const AD_STATUS_LABELS: Record<AdStatus, string> = {
 };
 
 export const SORT_OPTIONS = [
-	{ key: 'createdAt_desc', label: 'По дате: новые' },
-	{ key: 'createdAt_asc', label: 'По дате: старые' },
-	{ key: 'price_asc', label: 'По цене: дешёвле' },
+	{ key: 'createdAt_asc', label: 'По дате: новые' },
+	{ key: 'createdAt_desc', label: 'По дате: старые' },
+	{ key: 'price_asc', label: 'По цене: дешевле' },
 	{ key: 'price_desc', label: 'По цене: дороже' },
 	{ key: 'priority_desc', label: 'По приоритету: сначала срочные' },
 ];

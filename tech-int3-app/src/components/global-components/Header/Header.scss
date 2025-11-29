@@ -1,49 +1,49 @@
 .app-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  padding: 16px 0;
-  z-index: 1000;
+   position: fixed;
+   top: 0;
+   width: 100%;
+   background-color: #fff;
+   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+   padding: 16px 0;
+   z-index: 1000;
 
-  &__container {
-    margin: 0 100px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+   &__container {
+      margin: 0 100px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
 
-  &__logo {
-    height: 32px;
-  }
+   &__logo {
+      height: 32px;
+   }
 
-  &__author-label {
-    font-size: 18px;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  @media (max-width: 1000px) {
-    &__container {
-      margin: 0 32px;
-    }
-  }
-
-  @media (max-width: 550px) {
-    &__container {
-      margin: 0 16px;
-    }
-
-    &__logo {
-      height: 28px;
-    }
-
-    &__author-label {
+   &__author-label {
       font-size: 18px;
-      max-width: 100px;
-    }
-  }
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+   }
+
+   @media (max-width: 1000px) {
+      &__container {
+         margin: 0 32px;
+      }
+   }
+
+   @media (max-width: 550px) {
+      &__container {
+         margin: 0 16px;
+      }
+
+      &__logo {
+         height: 28px;
+      }
+
+      &__author-label {
+         font-size: 18px;
+         max-width: 100px;
+      }
+   }
 }
