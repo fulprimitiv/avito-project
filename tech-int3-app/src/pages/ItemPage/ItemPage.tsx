@@ -11,27 +11,21 @@ import './ItemPage.scss';
 
 export const ItemPage = () => {
    const { id } = useParams<{ id: string }>();
-   const { ad, loading, error } = useAdById(id);
+   const { ad, error } = useAdById(id);
 
-   const { prevId, nextId, navigate, location } = useAdNavigation(id);
-
-   if (loading) return <div className="item-page__loading">Загрузка...</div>;
+   const { prevId, nextId, navigate } = useAdNavigation(id);
 
    if (error) return <div className="item-page__error">{error}</div>;
 
    if (!ad) return null;
 
    return (
-      <div className="item-page">
+      <div className="item-page fade-in">
          <div className="item-page__nav">
             <div className="item-page__nav-left">
                <button
                   className="item-page__btn"
-                  onClick={() =>
-                     navigate('/list', {
-                        state: { from: (location as any)?.state?.from || undefined },
-                     })
-                  }
+                  onClick={() => navigate('/list')}
                >
                   Назад к списку
                </button>

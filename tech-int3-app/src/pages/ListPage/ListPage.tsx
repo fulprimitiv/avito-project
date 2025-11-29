@@ -27,14 +27,14 @@ export const ListPage: React.FC = () => {
 
    if (error) {
       return (
-         <Container sx={{ mt: 15, textAlign: 'center' }}>
+         <Container sx={{ mt: 15, textAlign: 'center' }} className="fade-in">
             <Typography color="error">{error}</Typography>
          </Container>
       );
    }
 
    return (
-      <Container sx={{ mt: 15 }}>
+      <Container sx={{ mt: 15 }} className="fade-in">
          <Filters onFiltersChange={handleFiltersChange} />
 
          {loading ? (
