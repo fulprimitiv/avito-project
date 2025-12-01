@@ -1,0 +1,23 @@
+.stats-page {
+	max-width: 1200px;
+	margin: 100px auto;
+	padding: 0 16px;
+
+	&__title {
+		font-size: 26px;
+		font-weight: 600;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+}
+
+.fade-in {
+	opacity: 0;
+	animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+	to {
+		opacity: 1;
+	}
+}
