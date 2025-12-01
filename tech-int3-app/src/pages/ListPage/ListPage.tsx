@@ -27,51 +27,53 @@ export const ListPage: React.FC = () => {
 
    if (error) {
       return (
-         <Container sx={{ mt: 15, textAlign: 'center' }} className="fade-in">
+         <Container sx={{ mt: 15, textAlign: 'center' }}>
             <Typography color="error">{error}</Typography>
          </Container>
       );
    }
 
-   return (
-      <Container sx={{ mt: 15 }} className="fade-in">
-         <Filters onFiltersChange={handleFiltersChange} />
+   if (loading && ads.length === 0) {
+      return (
+         <Container sx={{ mt: 15 }}>
+            <Filters onFiltersChange={handleFiltersChange} />
 
-         {loading ? (
             <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
                <CircularProgress />
             </Box>
-         ) : ads.length === 0 ? (
-            <Typography sx={{ mt: 4, textAlign: 'center' }}>Объявления не найдены</Typography>
-         ) : (
-            <>
-               <CardList ads={ads} />
+         </Container>
+      );
+   }
 
-               {totalPages > 1 && (
-                  <Stack alignItems="center" sx={{ pt: 4 }}>
-                     <Pagination
-                        count={totalPages}
-                        page={currentPage}
-                        onChange={handlePageChange}
-                        color="primary"
-                     />
-                  </Stack>
-               )}
+   return (
+      <Container sx={{ mt: 15 }}>
+         <Filters onFiltersChange={handleFiltersChange} />
 
-               {!loading && (
-                  <Typography
-                     sx={{
-                        p: 3,
-                        fontSize: '0.95rem',
-                        color: 'text.secondary',
-                        textAlign: 'center',
-                     }}
-                  >
-                     Показано на странице: {ads.length} • Общее количество: {totalItems}
-                  </Typography>
-               )}
-            </>
+         <CardList ads={ads} />
+
+         {totalPages > 1 && (
+            <Stack alignItems="center" sx={{ pt: 4 }}>
+               <Pagination
+                  count={totalPages}
+                  page={currentPage}
+                  onChange={handlePageChange}
+                  color="primary"
+               />
+            </Stack>
          )}
-      </Container>
+
+         {!loading && (
+            <Typography
+               sx={{
+                  p: 3,
+                  fontSize: '0.95rem',
+                  color: 'text.secondary',
+                  textAlign: 'center',
+               }}
+            >
+               Показано на странице: {ads.length} • Общее количество: {totalItems}
+            </Typography>
+         )}
+      </Container >
    );
 };

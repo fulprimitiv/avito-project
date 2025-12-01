@@ -27,19 +27,19 @@
          display: flex;
          gap: 8px;
       }
+   }
 
-      &__btn {
-         padding: 8px 12px;
-         border: 1px solid #ccc;
-         background: #fff;
-         border-radius: 6px;
-         cursor: pointer;
-      }
+   &__btn {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      background: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+   }
 
-      button:disabled {
-         opacity: 0.5;
-         cursor: not-allowed;
-      }
+   button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
    }
 }
 
