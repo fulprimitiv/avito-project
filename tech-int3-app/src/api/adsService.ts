@@ -1,5 +1,13 @@
 import { api } from './axios';
-import type { AdsListResponse, AdsQueryParams, Ad, StatsSummaryProps, ActivityData, DecisionsData, CategoriesData } from '../shared/types/adsTypes';
+import type {
+   AdsListResponse,
+   AdsQueryParams,
+   Ad,
+   StatsSummaryProps,
+   ActivityData,
+   DecisionsData,
+   CategoriesData,
+} from '../shared/types/adsTypes';
 
 export const getAdsList = async (params?: AdsQueryParams): Promise<AdsListResponse> => {
    const response = await api.get('/ads', { params });

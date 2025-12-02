@@ -23,10 +23,7 @@ export const ItemPage = () => {
       <div className="item-page fade-in">
          <div className="item-page__nav">
             <div className="item-page__nav-left">
-               <button
-                  className="item-page__btn"
-                  onClick={() => navigate('/list')}
-               >
+               <button className="item-page__btn" onClick={() => navigate('/list')}>
                   Назад к списку
                </button>
             </div>

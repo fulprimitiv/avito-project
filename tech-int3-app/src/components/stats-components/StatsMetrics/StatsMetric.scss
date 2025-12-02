@@ -1,39 +1,39 @@
 .stats-summary {
-	&__cards {
-		display: grid;
-		gap: 20px;
-		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-	}
+   &__cards {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+   }
 
-	&__card {
-		background: #ffffff;
-		border-radius: 12px;
-		padding: 20px;
-		box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-		transition: 0.2s ease;
+   &__card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      transition: 0.2s ease;
 
-		&:hover {
-			transform: translateY(-4px);
-			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-		}
-	}
+      &:hover {
+         transform: translateY(-4px);
+         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      }
+   }
 
-	&__title {
-		font-size: 15px;
-		color: #7a7a7a;
-		margin-bottom: 8px;
-	}
+   &__title {
+      font-size: 15px;
+      color: #7a7a7a;
+      margin-bottom: 8px;
+   }
 
-	&__value {
-		font-size: 28px;
-		font-weight: 600;
-		color: #0070f0;
-		margin-bottom: 6px;
-	}
+   &__value {
+      font-size: 28px;
+      font-weight: 600;
+      color: #0070f0;
+      margin-bottom: 6px;
+   }
 
-	&__sub {
-		font-size: 13px;
-		color: #9b9b9b;
-		margin-top: 4px;
-	}
+   &__sub {
+      font-size: 13px;
+      color: #9b9b9b;
+      margin-top: 4px;
+   }
 }

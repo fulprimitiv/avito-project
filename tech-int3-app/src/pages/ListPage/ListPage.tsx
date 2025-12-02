@@ -74,6 +74,6 @@ export const ListPage: React.FC = () => {
                Показано на странице: {ads.length} • Общее количество: {totalItems}
             </Typography>
          )}
-      </Container >
+      </Container>
    );
 };

@@ -20,7 +20,7 @@ export const StatsPage: React.FC = () => {
 
    if (!summary) {
       return (
-         <Typography sx={{ mt: 15, textAlign: 'center', color: '#d32f2f' }} >
+         <Typography sx={{ mt: 15, textAlign: 'center', color: '#d32f2f' }}>
             Данных по статистике не найдено
          </Typography>
       );
@@ -36,4 +36,3 @@ export const StatsPage: React.FC = () => {
       </div>
    );
 };
-
