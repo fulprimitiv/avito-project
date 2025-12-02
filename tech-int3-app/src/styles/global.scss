@@ -1,9 +1,9 @@
-@use './normalize' as *;
-@use './fonts' as *;
-@use './variables' as *;
+@use "./normalize" as *;
+@use "./fonts" as *;
+@use "./variables" as *;
 
 body {
-   font-family: 'Montserrat', sans-serif;
+   font-family: "Montserrat", sans-serif;
    background-color: $bg-primary;
    color: $color-text-primary;
    min-height: 100%;
@@ -39,9 +39,7 @@ p {
    color: $color-text-secondary;
 }
 
-.container {
-   width: 100%;
+.app-container {
    max-width: 1200px;
-   margin: 0 auto;
-   padding: 0 16px;
+   margin: 64px auto;
 }

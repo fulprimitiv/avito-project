@@ -1,11 +1,14 @@
 import React from 'react';
 import './StatsPage.scss';
 import { useStats } from '../../shared/hooks/useStatsMetrics';
+import { useStatsCharts } from '../../shared/hooks/useStatsCharts';
 import { StatsMetric } from '../../components/stats-components/StatsMetrics/StatsMetric';
+import { StatsCharts } from '../../components/stats-components/StatsCharts/StatsCharts';
 import { Box, CircularProgress, Typography } from '@mui/material';
 
 export const StatsPage: React.FC = () => {
    const { summary, loading } = useStats();
+   const { activity, categories, decisions } = useStatsCharts();
 
    if (loading) {
       return (
@@ -28,6 +31,8 @@ export const StatsPage: React.FC = () => {
          <h2 className="stats-page__title">Статистика модератора</h2>
 
          <StatsMetric summary={summary} />
+
+         <StatsCharts activity={activity} categories={categories} decisions={decisions} />
       </div>
    );
 };

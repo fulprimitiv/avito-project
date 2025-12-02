@@ -1,0 +1,19 @@
+.stats-charts {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+
+	&__block {
+		background: #fff;
+		padding: 20px;
+		border-radius: 12px;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	}
+
+	&__title {
+		margin-bottom: 12px;
+		font-size: 1.25rem;
+		font-weight: 600;
+		text-align: center;
+	}
+}
